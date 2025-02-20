@@ -9809,7 +9809,7 @@
      i32.const 12
      i32.add
      global.set $~lib/memory/__stack_pointer
-     i32.const 2
+     i32.const 0
      br $__inlined_func$~lib/@solo-io/proxy-runtime/runtime/Context#onRequestHeaders@virtual
     end
     i32.const 0
