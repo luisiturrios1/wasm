@@ -8,14 +8,15 @@
  (type $none_=>_none (func))
  (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (type $none_=>_i32 (func (result i32)))
- (type $i32_i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32 i32)))
  (type $i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32) (result i32)))
+ (type $i32_i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32 i32)))
  (type $i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32) (result i32)))
  (import "env" "proxy_log" (func $~lib/@solo-io/proxy-runtime/imports/proxy_log (param i32 i32 i32) (result i32)))
  (import "wasi_unstable" "proc_exit" (func $~lib/bindings/wasi_unstable/proc_exit (param i32)))
  (import "env" "proxy_get_buffer_bytes" (func $~lib/@solo-io/proxy-runtime/imports/proxy_get_buffer_bytes (param i32 i32 i32 i32 i32) (result i32)))
  (import "env" "proxy_get_property" (func $~lib/@solo-io/proxy-runtime/imports/proxy_get_property (param i32 i32 i32 i32) (result i32)))
  (import "env" "proxy_set_effective_context" (func $~lib/@solo-io/proxy-runtime/imports/proxy_set_effective_context (param i32) (result i32)))
+ (import "env" "proxy_add_header_map_value" (func $~lib/@solo-io/proxy-runtime/imports/proxy_add_header_map_value (param i32 i32 i32 i32 i32) (result i32)))
  (global $~argumentsLength (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/threshold (mut i32) (i32.const 0))
@@ -35,7 +36,7 @@
  (global $~lib/@solo-io/proxy-runtime/runtime/stream_context (mut i32) (i32.const 0))
  (global $~lib/@solo-io/proxy-runtime/runtime/root_context_factory_map (mut i32) (i32.const 0))
  (global $~lib/@solo-io/proxy-runtime/runtime/context_map (mut i32) (i32.const 0))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 24140))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 24204))
  (memory $0 1)
  (data (i32.const 1036) "\1c")
  (data (i32.const 1048) "\01")
@@ -79,7 +80,7 @@
  (data (i32.const 3596) "\1c")
  (data (i32.const 3608) "\15\00\00\00\08\00\00\00\01")
  (data (i32.const 3628) ",")
- (data (i32.const 3640) "\01\00\00\00\14\00\00\00a\00d\00d\00_\00h\00e\00a\00d\00e\00r")
+ (data (i32.const 3640) "\01\00\00\00\16\00\00\00j\00w\00e\00_\00c\00o\00n\00t\00e\00x\00t")
  (data (i32.const 3676) "<")
  (data (i32.const 3688) "\01\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d")
  (data (i32.const 3740) "<")
@@ -188,20 +189,24 @@
  (data (i32.const 7256) "\01\00\00\00\12\00\00\00:\00 \00o\00n\00L\00o\00g\00(\00)")
  (data (i32.const 7292) ",")
  (data (i32.const 7304) "\01\00\00\00\18\00\00\00:\00 \00o\00n\00D\00e\00l\00e\00t\00e\00(\00)")
- (data (i32.const 7340) "L")
- (data (i32.const 7352) "\01\00\00\002\00\00\00:\00 \00c\00a\00n\00c\00e\00l\00P\00e\00n\00d\00i\00n\00g\00R\00e\00q\00u\00e\00s\00t\00s\00(\00)")
- (data (i32.const 7420) "|")
- (data (i32.const 7432) "\01\00\00\00^\00\00\00E\00l\00e\00m\00e\00n\00t\00 \00t\00y\00p\00e\00 \00m\00u\00s\00t\00 \00b\00e\00 \00n\00u\00l\00l\00a\00b\00l\00e\00 \00i\00f\00 \00a\00r\00r\00a\00y\00 \00i\00s\00 \00h\00o\00l\00e\00y")
- (data (i32.const 7552) "\19\00\00\00 \00\00\00\00\00\00\00 ")
- (data (i32.const 7580) " \00\00\00\00\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00 ")
- (data (i32.const 7628) " ")
- (data (i32.const 7640) "\0b\00\00\00 ")
- (data (i32.const 7660) "\10A\02")
- (data (i32.const 7676) " ")
- (data (i32.const 7688) "\0b\00\00\00\10A\02\00\00\00\00\00\10A\82\00\00\00\00\00\10A\02")
- (data (i32.const 7720) "\n")
- (data (i32.const 7732) "\02\01")
- (data (i32.const 7744) "\10\00\00\00\02A")
+ (data (i32.const 7340) "\1c")
+ (data (i32.const 7352) "\01\00\00\00\06\00\00\00j\00w\00e")
+ (data (i32.const 7372) "\1c")
+ (data (i32.const 7384) "\01\00\00\00\n\00\00\001\002\003\00=\00=")
+ (data (i32.const 7404) "L")
+ (data (i32.const 7416) "\01\00\00\002\00\00\00:\00 \00c\00a\00n\00c\00e\00l\00P\00e\00n\00d\00i\00n\00g\00R\00e\00q\00u\00e\00s\00t\00s\00(\00)")
+ (data (i32.const 7484) "|")
+ (data (i32.const 7496) "\01\00\00\00^\00\00\00E\00l\00e\00m\00e\00n\00t\00 \00t\00y\00p\00e\00 \00m\00u\00s\00t\00 \00b\00e\00 \00n\00u\00l\00l\00a\00b\00l\00e\00 \00i\00f\00 \00a\00r\00r\00a\00y\00 \00i\00s\00 \00h\00o\00l\00e\00y")
+ (data (i32.const 7616) "\19\00\00\00 \00\00\00\00\00\00\00 ")
+ (data (i32.const 7644) " \00\00\00\00\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00 ")
+ (data (i32.const 7692) " ")
+ (data (i32.const 7704) "\0b\00\00\00 ")
+ (data (i32.const 7724) "\10A\02")
+ (data (i32.const 7740) " ")
+ (data (i32.const 7752) "\0b\00\00\00\10A\02\00\00\00\00\00\10A\82\00\00\00\00\00\10A\02")
+ (data (i32.const 7784) "\n")
+ (data (i32.const 7796) "\02\01")
+ (data (i32.const 7808) "\10\00\00\00\02A")
  (table $0 2 funcref)
  (elem $0 (i32.const 1) $start:assembly/index~anonymous|0)
  (export "malloc" (func $~lib/@solo-io/proxy-runtime/malloc/malloc))
@@ -1119,11 +1124,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -1310,11 +1315,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -1589,11 +1594,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -1630,7 +1635,7 @@
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
   i32.const 3504
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
-  i32.const 7440
+  i32.const 7504
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
   i32.const 3824
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
@@ -1743,7 +1748,7 @@
   if
    i32.const 0
    local.get $0
-   i32.const 24140
+   i32.const 24204
    i32.lt_u
    local.get $0
    i32.load offset=8
@@ -1818,7 +1823,7 @@
   if (result i32)
    i32.const 1
   else
-   i32.const 7552
+   i32.const 7616
    i32.load
    local.get $2
    i32.lt_u
@@ -1833,7 +1838,7 @@
    local.get $2
    i32.const 3
    i32.shl
-   i32.const 7556
+   i32.const 7620
    i32.add
    i32.load
    i32.const 32
@@ -2398,10 +2403,10 @@
   if
    unreachable
   end
-  i32.const 24144
+  i32.const 24208
   i32.const 0
   i32.store
-  i32.const 25712
+  i32.const 25776
   i32.const 0
   i32.store
   loop $for-loop|0
@@ -2412,7 +2417,7 @@
     local.get $0
     i32.const 2
     i32.shl
-    i32.const 24144
+    i32.const 24208
     i32.add
     i32.const 0
     i32.store offset=4
@@ -2430,7 +2435,7 @@
       i32.add
       i32.const 2
       i32.shl
-      i32.const 24144
+      i32.const 24208
       i32.add
       i32.const 0
       i32.store offset=96
@@ -2448,13 +2453,13 @@
     br $for-loop|0
    end
   end
-  i32.const 24144
-  i32.const 25716
+  i32.const 24208
+  i32.const 25780
   memory.size
   i32.const 16
   i32.shl
   call $~lib/rt/tlsf/addMemory
-  i32.const 24144
+  i32.const 24208
   global.set $~lib/rt/tlsf/ROOT
  )
  (func $~lib/rt/itcms/step (result i32)
@@ -2539,7 +2544,7 @@
      local.set $0
      loop $while-continue|0
       local.get $0
-      i32.const 24140
+      i32.const 24204
       i32.lt_u
       if
        local.get $0
@@ -2639,7 +2644,7 @@
      unreachable
     end
     local.get $0
-    i32.const 24140
+    i32.const 24204
     i32.lt_u
     if
      local.get $0
@@ -2662,7 +2667,7 @@
      i32.const 4
      i32.add
      local.tee $0
-     i32.const 24140
+     i32.const 24204
      i32.ge_u
      if
       global.get $~lib/rt/tlsf/ROOT
@@ -3336,7 +3341,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3352,7 +3357,7 @@
    memory.size
    i32.const 16
    i32.shl
-   i32.const 24140
+   i32.const 24204
    i32.sub
    i32.const 1
    i32.shr_u
@@ -3386,7 +3391,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3416,7 +3421,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3445,7 +3450,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3526,7 +3531,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3576,7 +3581,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3636,7 +3641,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3697,8 +3702,8 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -3717,7 +3722,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3736,7 +3741,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3764,7 +3769,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3832,7 +3837,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -3915,8 +3920,8 @@
    local.get $0
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -4254,7 +4259,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -4271,7 +4276,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -4321,8 +4326,8 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -4339,7 +4344,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -4356,7 +4361,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -4435,8 +4440,8 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -4604,7 +4609,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -4727,7 +4732,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 7756
+     i32.const 7820
      i32.lt_s
      br_if $folding-inner0
      global.get $~lib/memory/__stack_pointer
@@ -4833,8 +4838,8 @@
    local.get $0
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -4853,11 +4858,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -5029,11 +5034,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -5265,11 +5270,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -5303,7 +5308,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5320,7 +5325,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5399,8 +5404,8 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -5414,7 +5419,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5431,7 +5436,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5510,8 +5515,8 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -5525,7 +5530,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5542,7 +5547,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5592,8 +5597,8 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -5608,7 +5613,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5625,7 +5630,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5674,7 +5679,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -5698,8 +5703,8 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -6000,7 +6005,7 @@
   block $folding-inner1
    block $folding-inner0
     global.get $~lib/memory/__stack_pointer
-    i32.const 7756
+    i32.const 7820
     i32.lt_s
     br_if $folding-inner0
     global.get $~lib/memory/__stack_pointer
@@ -6018,7 +6023,7 @@
     i32.sub
     global.set $~lib/memory/__stack_pointer
     global.get $~lib/memory/__stack_pointer
-    i32.const 7756
+    i32.const 7820
     i32.lt_s
     br_if $folding-inner0
     global.get $~lib/memory/__stack_pointer
@@ -6034,7 +6039,7 @@
     i32.sub
     global.set $~lib/memory/__stack_pointer
     global.get $~lib/memory/__stack_pointer
-    i32.const 7756
+    i32.const 7820
     i32.lt_s
     br_if $folding-inner0
     global.get $~lib/memory/__stack_pointer
@@ -6088,7 +6093,7 @@
       i32.sub
       global.set $~lib/memory/__stack_pointer
       global.get $~lib/memory/__stack_pointer
-      i32.const 7756
+      i32.const 7820
       i32.lt_s
       br_if $folding-inner1
       global.get $~lib/memory/__stack_pointer
@@ -6287,8 +6292,8 @@
     return
    end
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -6302,11 +6307,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -6452,11 +6457,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -6631,11 +6636,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -6661,7 +6666,7 @@
    i32.sub
    i32.load offset=12
    local.tee $0
-   i32.const 7552
+   i32.const 7616
    i32.load
    i32.le_u
    if
@@ -6675,7 +6680,7 @@
      local.get $0
      i32.const 3
      i32.shl
-     i32.const 7556
+     i32.const 7620
      i32.add
      i32.load offset=4
      local.tee $0
@@ -6705,11 +6710,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -6753,7 +6758,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -6938,7 +6943,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -6953,7 +6958,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -7142,8 +7147,8 @@
    local.get $1
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -7160,7 +7165,7 @@
   block $folding-inner1
    block $folding-inner0
     global.get $~lib/memory/__stack_pointer
-    i32.const 7756
+    i32.const 7820
     i32.lt_s
     br_if $folding-inner0
     global.get $~lib/memory/__stack_pointer
@@ -7416,7 +7421,7 @@
       i32.sub
       global.set $~lib/memory/__stack_pointer
       global.get $~lib/memory/__stack_pointer
-      i32.const 7756
+      i32.const 7820
       i32.lt_s
       br_if $folding-inner0
       global.get $~lib/memory/__stack_pointer
@@ -7443,7 +7448,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 7756
+     i32.const 7820
      i32.lt_s
      br_if $folding-inner0
      global.get $~lib/memory/__stack_pointer
@@ -7504,8 +7509,8 @@
     local.set $0
     br $folding-inner1
    end
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -7530,11 +7535,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -7560,7 +7565,7 @@
    i32.sub
    i32.load offset=12
    local.tee $0
-   i32.const 7552
+   i32.const 7616
    i32.load
    i32.le_u
    if
@@ -7574,7 +7579,7 @@
      local.get $0
      i32.const 3
      i32.shl
-     i32.const 7556
+     i32.const 7620
      i32.add
      i32.load offset=4
      local.tee $0
@@ -7607,7 +7612,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -7989,7 +7994,7 @@
     i32.sub
     global.set $~lib/memory/__stack_pointer
     global.get $~lib/memory/__stack_pointer
-    i32.const 7756
+    i32.const 7820
     i32.lt_s
     br_if $folding-inner0
     global.get $~lib/memory/__stack_pointer
@@ -8105,8 +8110,8 @@
    global.set $~lib/memory/__stack_pointer
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8118,11 +8123,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8149,11 +8154,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8183,11 +8188,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8277,11 +8282,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8313,11 +8318,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8385,11 +8390,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8423,11 +8428,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8465,11 +8470,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8509,11 +8514,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8587,7 +8592,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -8604,7 +8609,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -8684,8 +8689,8 @@
    i32.const 1
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8699,7 +8704,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -8716,7 +8721,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -8796,8 +8801,8 @@
    i32.const 1
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8810,11 +8815,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -8864,11 +8869,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -9071,7 +9076,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -9088,7 +9093,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -9253,8 +9258,8 @@
    i32.const 1
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -9274,7 +9279,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -9292,7 +9297,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -9451,8 +9456,8 @@
    local.get $2
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -9467,11 +9472,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -9654,11 +9659,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -9707,39 +9712,121 @@
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 7756
-  i32.lt_s
-  if
-   i32.const 24160
-   i32.const 24208
-   i32.const 1
-   i32.const 1
-   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
-   unreachable
+  block $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   i32.const 7820
+   i32.lt_s
+   br_if $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   local.tee $1
+   i32.const 0
+   i32.store
+   local.get $1
+   local.get $0
+   call $~lib/@solo-io/proxy-runtime/runtime/getContext
+   local.tee $0
+   i32.store
+   block $__inlined_func$~lib/@solo-io/proxy-runtime/runtime/Context#onRequestHeaders@virtual (result i32)
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    i32.const 23
+    i32.eq
+    if
+     global.get $~lib/memory/__stack_pointer
+     i32.const 12
+     i32.sub
+     global.set $~lib/memory/__stack_pointer
+     global.get $~lib/memory/__stack_pointer
+     i32.const 7820
+     i32.lt_s
+     br_if $folding-inner1
+     global.get $~lib/memory/__stack_pointer
+     local.tee $0
+     i64.const 0
+     i64.store
+     local.get $0
+     i32.const 0
+     i32.store offset=8
+     local.get $0
+     global.get $~lib/@solo-io/proxy-runtime/runtime/stream_context
+     i32.load
+     i32.load
+     local.tee $1
+     i32.store
+     local.get $0
+     i32.const 7360
+     i32.store offset=4
+     local.get $0
+     i32.const 7392
+     i32.store offset=8
+     local.get $1
+     i32.load
+     local.get $0
+     i32.const 8
+     i32.sub
+     global.set $~lib/memory/__stack_pointer
+     global.get $~lib/memory/__stack_pointer
+     i32.const 7820
+     i32.lt_s
+     br_if $folding-inner1
+     global.get $~lib/memory/__stack_pointer
+     local.tee $0
+     i64.const 0
+     i64.store
+     i32.const 1
+     global.set $~argumentsLength
+     local.get $0
+     i32.const 7360
+     call $~lib/string/String.UTF8.encode@varargs
+     local.tee $0
+     i32.store
+     i32.const 1
+     global.set $~argumentsLength
+     global.get $~lib/memory/__stack_pointer
+     i32.const 7392
+     call $~lib/string/String.UTF8.encode@varargs
+     local.tee $1
+     i32.store offset=4
+     local.get $0
+     local.get $0
+     i32.const 20
+     i32.sub
+     i32.load offset=16
+     local.get $1
+     local.get $1
+     i32.const 20
+     i32.sub
+     i32.load offset=16
+     call $~lib/@solo-io/proxy-runtime/imports/proxy_add_header_map_value
+     drop
+     global.get $~lib/memory/__stack_pointer
+     i32.const 8
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     global.get $~lib/memory/__stack_pointer
+     i32.const 12
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     i32.const 2
+     br $__inlined_func$~lib/@solo-io/proxy-runtime/runtime/Context#onRequestHeaders@virtual
+    end
+    i32.const 0
+    br $__inlined_func$~lib/@solo-io/proxy-runtime/runtime/Context#onRequestHeaders@virtual
+   end
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   return
   end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i32.const 0
-  i32.store
-  local.get $1
-  local.get $0
-  call $~lib/@solo-io/proxy-runtime/runtime/getContext
-  local.tee $0
-  i32.store
-  i32.const 2
-  i32.const 0
-  local.get $0
-  i32.const 8
-  i32.sub
-  i32.load
-  i32.const 23
-  i32.eq
-  select
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
+  i32.const 24224
+  i32.const 24272
+  i32.const 1
+  i32.const 1
+  call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
+  unreachable
  )
  (func $~lib/@solo-io/proxy-runtime/exports/proxy_on_request_body (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   global.get $~lib/memory/__stack_pointer
@@ -9747,11 +9834,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -9777,11 +9864,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -9809,7 +9896,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -9826,7 +9913,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -9936,8 +10023,8 @@
    i32.const 0
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -9951,7 +10038,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -9968,7 +10055,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -10078,8 +10165,8 @@
    i32.const 0
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -10093,7 +10180,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner0
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -10110,7 +10197,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner0
    global.get $~lib/memory/__stack_pointer
@@ -10161,8 +10248,8 @@
    i32.const 0
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -10186,7 +10273,7 @@
   global.set $~lib/memory/__stack_pointer
   block $folding-inner2
    global.get $~lib/memory/__stack_pointer
-   i32.const 7756
+   i32.const 7820
    i32.lt_s
    br_if $folding-inner2
    global.get $~lib/memory/__stack_pointer
@@ -10220,7 +10307,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 7756
+     i32.const 7820
      i32.lt_s
      br_if $folding-inner2
      global.get $~lib/memory/__stack_pointer
@@ -10265,7 +10352,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 7756
+     i32.const 7820
      i32.lt_s
      br_if $folding-inner2
      global.get $~lib/memory/__stack_pointer
@@ -10299,10 +10386,10 @@
      local.get $0
      i32.store
      global.get $~lib/memory/__stack_pointer
-     i32.const 7360
+     i32.const 7424
      i32.store offset=4
      local.get $0
-     i32.const 7360
+     i32.const 7424
      call $~lib/string/String.__concat
      local.set $0
      global.get $~lib/memory/__stack_pointer
@@ -10324,7 +10411,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 7756
+     i32.const 7820
      i32.lt_s
      br_if $folding-inner2
      global.get $~lib/memory/__stack_pointer
@@ -10342,7 +10429,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 7756
+     i32.const 7820
      i32.lt_s
      br_if $folding-inner2
      global.get $~lib/memory/__stack_pointer
@@ -10636,7 +10723,7 @@
     i32.sub
     global.set $~lib/memory/__stack_pointer
     global.get $~lib/memory/__stack_pointer
-    i32.const 7756
+    i32.const 7820
     i32.lt_s
     br_if $folding-inner2
     global.get $~lib/memory/__stack_pointer
@@ -10688,8 +10775,8 @@
    i32.const 1
    return
   end
-  i32.const 24160
-  i32.const 24208
+  i32.const 24224
+  i32.const 24272
   i32.const 1
   i32.const 1
   call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -10701,11 +10788,11 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 7756
+  i32.const 7820
   i32.lt_s
   if
-   i32.const 24160
-   i32.const 24208
+   i32.const 24224
+   i32.const 24272
    i32.const 1
    i32.const 1
    call $~lib/@solo-io/proxy-runtime/runtime/abort_proc_exit
@@ -10739,7 +10826,7 @@
   local.get $0
   i32.eqz
   if
-   i32.const 7440
+   i32.const 7504
    i32.const 4880
    i32.const 118
    i32.const 40
